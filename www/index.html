@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTHT | APUE Web Server</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f1f5f9;
+            color: #172033;
+        }
+
+        header {
+            background: linear-gradient(135deg, #101827, #1e3a5f);
+            color: white;
+            padding: 32px 8%;
+        }
+
+        .brand {
+            color: #93c5fd;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-size: 14px;
+        }
+
+        header h1 {
+            margin: 12px 0;
+            font-size: 32px;
+        }
+
+        header p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        main {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px #0f172a0c;
+            border: 1px solid #e2e8f0;
+        }
+
+        .label {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .online {
+            color: #15803d;
+        }
+
+        .team-section {
+            margin-top: 42px;
+        }
+
+        .team-banner {
+            background: linear-gradient(135deg, #1d4ed8, #4338ca);
+            color: white;
+            padding: 28px;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .team-banner .tag {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #dbeafe;
+            font-weight: bold;
+        }
+
+        .team-banner h2 {
+            margin: 12px 0 8px;
+            font-size: 28px;
+        }
+
+        .team-banner p {
+            margin: 0;
+            color: #e0e7ff;
+            line-height: 1.6;
+        }
+
+        .members {
+            background: white;
+            padding: 22px;
+            border-radius: 0 0 16px 16px;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .member {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .member:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px #0f172a12;
+        }
+
+        .avatar {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .member-name {
+            font-weight: bold;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .member-role {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .endpoint {
+            margin-top: 20px;
+            background: #101827;
+            color: #bfdbfe;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            padding: 28px 16px;
+            margin-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                padding: 28px 20px;
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+
+            .grid,
+            .members {
+                grid-template-columns: 1fr;
+            }
+
+            .team-banner h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand">LTHT · GROUP PROJECT</div>
+        <h1>APUE Web Server</h1>
+        <p>
+            Xây dựng HTTP Server bằng ngôn ngữ C
+            <br>
+            Advanced Programming in the UNIX Environment
+        </p>
+    </header>
+
+    <main>
+        <section>
+            <h2 class="section-title">Server Dashboard</h2>
+            <p class="subtitle">
+                Tổng quan hệ thống web server trong bài tập nhóm LTHT.
+            </p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="label">Server status</div>
+                    <div class="value online">ONLINE</div>
+                </div>
+
+                <div class="card">
+                    <div class="label">Listening port</div>
+                    <div class="value">8080</div>
+                </div>
+
+                <div class="card">
+                    <div class="label">HTTP protocol</div>
+                    <div class="value">HTTP/1.0</div>
+                </div>
+
+                <div class="card">
+                    <div class="label">Implementation</div>
+                    <div class="value">C / TCP Socket</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <div class="team-banner">
+                <div class="tag">OUR TEAM</div>
+                <h2>Nhóm LTHT</h2>
+                <p>
+                    Thành viên thực hiện dự án xây dựng HTTP Web Server.
+                </p>
+            </div>
+
+            <div class="members">
+                <div class="member">
+                    <div class="avatar">NT</div>
+                    <div>
+                        <div class="member-name">
+                            Nguyễn Trương Châu Trinh
+                        </div>
+                        <div class="member-role">Thành viên 01</div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="avatar">HT</div>
+                    <div>
+                        <div class="member-name">
+                            Hoàng Đức Tiến
+                        </div>
+                        <div class="member-role">Thành viên 02</div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="avatar">LT</div>
+                    <div>
+                        <div class="member-name">
+                            Lê Khánh Trọng
+                        </div>
+                        <div class="member-role">Thành viên 03</div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="avatar">UT</div>
+                    <div>
+                        <div class="member-name">
+                            Uyên Thư
+                        </div>
+                        <div class="member-role">Thành viên 04</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" style="margin-top: 28px">
+            <h2>Server Endpoint</h2>
+            <p>Địa chỉ truy cập server trên máy hiện tại:</p>
+            <div class="endpoint">
+                http://127.0.0.1:8080/
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <strong>LTHT — APUE Group Project</strong>
+        <br>
+        HTTP/1.0 · C Programming · Unix/Linux
+    </footer>
+</body>
+</html>
